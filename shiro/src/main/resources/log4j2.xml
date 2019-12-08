@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="1800">
+
+    <Properties>
+        <Property name="LogHome">/Users/zk_chs/workspace-own/springboot-demo/log</Property>
+        <Property name="LogPattern">%highlight{%d %p %C [%t] %m%n}{FATAL=red blink, ERROR=red, WARN=yellow bold, DEBUG=green bold, TRACE=blue}</Property>
+    </Properties>
+
+    <Appenders>
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout>
+                <Pattern>${LogPattern}</Pattern>
+            </PatternLayout>
+        </Console>
+
+        <RollingFile name="FileSystem" fileName="${LogHome}/mp-demo.log" filePattern="${LogHome}/$${date:yyyy-MM}/task-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>${LogPattern}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="5 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+        <Logger name="org.springframework" level="info" />
+        <Logger name="org.apache" level="info" />
+        <Logger name="com.mp" level="info" additivity="false">
+            <AppenderRef ref="Console" />
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="Console" />
+        </Root>
+
+        <!--<Logger name="org.springframework" level="debug" />-->
+        <!--<Logger name="org.apache" level="debug" />-->
+        <!--<Logger name="com.mp" level="debug" additivity="false">-->
+            <!--<AppenderRef ref="Console" />-->
+        <!--</Logger>-->
+        <!--<Root level="debug">-->
+            <!--<AppenderRef ref="Console" />-->
+        <!--</Root>-->
+    </Loggers>
+
+</Configuration>
