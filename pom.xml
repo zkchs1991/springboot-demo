@@ -13,6 +13,9 @@
         <module>mybatis-plus</module>
         <module>shiro</module>
         <module>datasource</module>
+        <module>spring-cloud-eureka</module>
+        <module>spring-cloud-producer</module>
+        <module>spring-cloud-comsumer</module>
     </modules>
 
     <properties>
@@ -26,13 +29,22 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- Import dependency management from Spring Boot -->
+            <!-- Spring Boot -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <type>pom</type>
                 <scope>import</scope>
                 <version>2.2.2.RELEASE</version>
+            </dependency>
+
+            <!-- Spring Cloud -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <!-- owns -->
 

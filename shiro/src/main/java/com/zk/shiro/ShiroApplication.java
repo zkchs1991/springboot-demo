@@ -7,11 +7,11 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 
 @SpringBootApplication(scanBasePackages = {"com.zk"}, exclude={DataSourceAutoConfiguration.class})
 @MapperScan(basePackages = {"com.zk.mp.dao"})
-public class RunningApplication {
+public class ShiroApplication {
 
     public static void main(String[] args) {
         System.setProperty("java.util.logging.manager", "org.apache.logging.log4j.jul.LogManager");
-        new SpringApplicationBuilder(RunningApplication.class)
+        new SpringApplicationBuilder(ShiroApplication.class)
                 .properties("spring.config.name=application,datasource")
                 .run(args);
     }
