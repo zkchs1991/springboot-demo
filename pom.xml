@@ -16,6 +16,7 @@
         <module>spring-cloud-eureka</module>
         <module>spring-cloud-producer</module>
         <module>spring-cloud-comsumer</module>
+        <module>socketio</module>
     </modules>
 
     <properties>

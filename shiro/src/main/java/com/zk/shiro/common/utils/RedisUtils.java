@@ -16,6 +16,8 @@ import static java.util.concurrent.TimeUnit.*;
 @Component
 public class RedisUtils {
 
+    public static final String shiro_session_key = "spring:session:shiro:";
+
     private static final Gson gson = new Gson();
 
     @Autowired

@@ -38,8 +38,8 @@ shiro:
 mybatis-plus:
   mapper-locations: com/zk/mp/dao/**/*.xml
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: com.mp.entity.*
-  type-enums-package: com.mp.common.enums
+  typeAliasesPackage: com.zk.mp.entity.*
+  type-enums-package: com.zk.mp.common.enums
   global-config:
     db-config:
       # 逻辑删除配置

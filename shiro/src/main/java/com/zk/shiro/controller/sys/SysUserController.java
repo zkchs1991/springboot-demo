@@ -1,6 +1,8 @@
 package com.zk.shiro.controller.sys;
 
 import com.zk.mp.dao.sys.SysUserDao;
+import com.zk.shiro.common.exception.RRException;
+import com.zk.shiro.common.utils.RedisUtils;
 import com.zk.shiro.common.utils.ShiroUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,6 +26,10 @@ public class SysUserController {
 
     @Autowired
     private SysUserDao sysUserDao;
+    @Autowired
+    private RedisUtils redisUtils;
+
+
 
     @RequestMapping(value = "/login")
     public String login (@RequestParam String username,
@@ -35,8 +41,9 @@ public class SysUserController {
         try {
             subject.login(token);
         } catch (Exception e){
-            return e.getMessage();
+            throw new RRException("用户名或密码错误");
         }
+        redisUtils.set(RedisUtils.shiro_session_key + username, ShiroUtils.getSession().getId());
 
         if (subject.hasRole("admin")){
             return "有admin权限";
