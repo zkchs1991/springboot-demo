@@ -1,0 +1,57 @@
+# Tomcat
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  port: 18081
+  compression:
+    enabled: false #是否开启压缩，默认为false.
+  servlet:
+    context-path: /
+    session:
+      timeout: 3600 # 单位 秒
+
+spring:
+  profiles:
+    active: dev
+  jackson:
+    dateFormat: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      enabled: true
+  freemarker:
+    suffix: .html
+    request-context-attribute: request
+
+#mybatis
+mybatis-plus:
+  mapper-locations: com/zk/mp/dao/**/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.zk.mp.entity.*
+  type-enums-package: com.zk.mp.common.enums
+  global-config:
+    db-config:
+      # 逻辑删除配置
+      logic-delete-value: -1
+      logic-not-delete-value: 0
+      #主键类型  auto:"数据库ID自增", none:"用户输入ID", id_worker:"全局唯一ID (数字类型唯一ID)", uuid:"全局唯一ID UUID";
+      id-type: auto
+      insert-strategy: not_null
+      update-strategy: not_null
+      select-strategy: not_null
+      table-underline: false
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+
+device:
+  server:
+    host: 127.0.0.1
+    port: 18082
+
